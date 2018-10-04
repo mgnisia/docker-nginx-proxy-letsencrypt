@@ -16,6 +16,7 @@ services:
       - ./nginx/vhost.d:/etc/nginx/vhost.d
       - ./nginx/html:/usr/share/nginx/html
       - ./nginx/certs:/etc/nginx/certs:ro
+      - ./nginx/dhparam:/etc/nginx/dhparam:ro
 
   nginx-gen:
     image: jwilder/docker-gen
@@ -27,6 +28,7 @@ services:
       - ./nginx/vhost.d:/etc/nginx/vhost.d
       - ./nginx/html:/usr/share/nginx/html
       - ./nginx/certs:/etc/nginx/certs:ro
+      - ./nginx/dhparam:/etc/nginx/dhparam:ro
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./nginx/nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl:ro
 
@@ -39,6 +41,7 @@ services:
       - ./nginx/vhost.d:/etc/nginx/vhost.d
       - ./nginx/html:/usr/share/nginx/html
       - ./nginx/certs:/etc/nginx/certs:rw
+      - ./nginx/dhparam:/etc/nginx/dhparam:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
       NGINX_DOCKER_GEN_CONTAINER: "nginx-gen"
